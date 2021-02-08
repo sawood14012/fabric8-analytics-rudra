@@ -38,7 +38,7 @@ jobs:
     - name: Install virtualenv
       run: pip install -U pip && pip install virtualenv
     - name: Run Unit Tests
-      run: make install && make test
+      run: make install && make test-actions
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:

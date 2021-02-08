@@ -1,6 +1,11 @@
 install:
 	pip3 install -e .; 
 
+venv-gh-actions:
+	virtualenv -p python3 venv-test;\
+		. venv-test/bin/activate;\
+		pip install -e .; pip install moto==1.3.6
+
 venv:
 	virtualenv -p python3 --no-site-packages venv-test;\
 		. venv-test/bin/activate;\
@@ -14,6 +19,8 @@ run_pytest:
 		pytest -W ignore tests -v
 
 test: venv run_pytest clean
+
+test-actions: venv-gh-actions run_pytest clean
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
